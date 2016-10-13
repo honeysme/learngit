@@ -186,12 +186,1297 @@ Bug分支
 
 
 Feature分支
+开发一个新feature，最好新建一个分支；
+
+如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
+
+
+
 
 多人协作
 
+因此，多人协作的工作模式通常是这样：
+
+首先，可以试图用git push origin branch-name推送自己的修改；
+
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+如果合并有冲突，则解决冲突，并在本地提交；
+
+没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+小结
+
+查看远程库信息，使用git remote -v；
+
+本地新建的分支如果不推送到远程，对其他人就是不
+
+
+
+
 创建标签
+
+命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+
+git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+
+git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
+
+命令git tag可以查看所有标签。
+
+$ git log --pretty=oneline --abbrev-commit 查看版本
+git tag
+tit show v0.1
+$ git tag -a v0.1 -m "version 0.1 released" 3628164
+
+
 
 操作标签
 
+$ git tag -d v0.1
+$ git push origin v1.0
+$ git push origin --tags
+$ git tag -d v0.9
+$ git push origin :refs/tags/v0.9
+
+命令git push origin <tagname>可以推送一个本地标签；
+
+命令git push origin --tags可以推送全部未推送过的本地标签；
+
+命令git tag -d <tagname>可以删除一个本地标签；
+
+命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+
+
+
 使用github
 自定义git
+
+
+
+
+------------------
+
+
+Zjl@Zjl-PC MINGW64 ~
+$ f:
+bash: f:: command not found
+
+Zjl@Zjl-PC MINGW64 ~
+$ f
+bash: f: command not found
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd f:
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd F:\workspace\wamp\apache\htdocs\library
+bash: cd: F:workspacewampapachehtdocslibrary: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd workspace\wamp\apache\htdocs\library
+bash: cd: workspacewampapachehtdocslibrary: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd workspace
+
+Zjl@Zjl-PC MINGW64 /f/workspace
+$ cd wamp
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp
+$ cd apache
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache
+$ cd htdocs
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ cd library
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ ^C
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git clone https://github.com/luopotaotao/library.git
+Cloning into 'library'...
+remote: Counting objects: 823, done.
+remote: Compressing objects: 100% (572/572), done.
+remote: Total 823 (delta 244), reused 816 (delta 240), pack-reused 0
+Receiving objects: 100% (823/823), 1.23 MiB | 201.00 KiB/s, done.
+Resolving deltas: 100% (244/244), done.
+Checking connectivity... done.
+Checking out files: 100% (850/850), done.
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ status
+bash: status: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ tit status
+bash: tit: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ ^C
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git remote
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git remote
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git remote
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git remote -v
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git clone https://github.com/luopotaotao/library.git
+fatal: destination path 'library' already exists and is not an empty directory.
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git clone https://github.com/luopotaotao/library.git
+fatal: destination path 'library' already exists and is not an empty directory.
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ ^C
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ ^C
+
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ cd C:\Users\Zjl\learngit
+bash: cd: C:UsersZjllearngit: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ cd \Users\Zjl\learngit
+bash: cd: UsersZjllearngit: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ cd..
+bash: cd..: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ c:
+bash: c:: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ cd c
+bash: cd: c: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ c
+bash: c: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ c:
+bash: c:: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ cd c:\
+> cd..
+bash: cd: c:cd..: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ cd..
+bash: cd..: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache
+$ cd ......
+bash: cd: ......: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f/workspace
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f
+$ c
+bash: c: command not found
+
+Zjl@Zjl-PC MINGW64 /f
+$ /c
+bash: /c: Is a directory
+
+Zjl@Zjl-PC MINGW64 /f
+$ c:
+bash: c:: command not found
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd c:
+
+Zjl@Zjl-PC MINGW64 /c
+$ cd Users
+
+Zjl@Zjl-PC MINGW64 /c/Users
+$ cd Zjl
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd learngit
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ add gitoperation.txt
+bash: add: command not found
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add gitoperation.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "update operation"
+[master 1eeb622] update operation
+ 1 file changed, 21 insertions(+)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 939 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To git@github.com:honeysme/learngit.git
+   a935c35..1eeb622  master -> master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ cd..
+bash: cd..: command not found
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd gitskills
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ git add test.txt
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ git add test.txt
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ cd gitskills
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (master)
+$ git add test.txt
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (master)
+$ git commit -m "add test.txt"
+[master 86136b0] add test.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.txt
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (master)
+$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 287 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:honeysme/gitskills.git
+   cb41207..86136b0  master -> master
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (master)
+$ git checkout -b dev
+Switched to a new branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (dev)
+$ git branch
+* dev
+  master
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (dev)
+$ cd..
+bash: cd..: command not found
+
+Zjl@Zjl-PC MINGW64 ~/gitskills/gitskills (dev)
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ cd learngit
+bash: cd: learngit: No such file or directory
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ git checkout -b dev
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ cd..
+bash: cd..: command not found
+
+Zjl@Zjl-PC MINGW64 ~/gitskills
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd learngit
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b dev
+Switched to a new branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git branch
+* dev
+  master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git add readme.text
+fatal: pathspec 'readme.text' did not match any files
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git add readme.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git commit -m "branch test"
+[dev 1bb7206] branch test
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git checkout master
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge dev
+Updating 1eeb622..1bb7206
+Fast-forward
+ readme.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch -d dev
+Deleted branch dev (was 1bb7206).
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch
+* master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b feature1
+M       gitoperation.txt
+Switched to a new branch 'feature1'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature1)
+$ git branch
+* feature1
+  master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature1)
+$ git add readme.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature1)
+$ git commit -m "AND simple"
+[feature1 b0fe05a] AND simple
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature1)
+$ git checkout master
+M       gitoperation.txt
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add readme.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "& simple"
+[master c013037] & simple
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge feature1
+Auto-merging readme.txt
+CONFLICT (content): Merge conflict in readme.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master|MERGING)
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   readme.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   gitoperation.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master|MERGING)
+$ git add readme.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master|MERGING)
+$ git commit -m "conflict fixed"
+[master 1431eb6] conflict fixed
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git log --graph --pretty=oneline --abbrev-commit
+*   1431eb6 conflict fixed
+|\
+| * b0fe05a AND simple
+* | c013037 & simple
+|/
+* 1bb7206 branch test
+* 1eeb622 update operation
+* a935c35 add operation
+* e72961b add test.txt
+* d6e1f0e add operate
+* e9eb860 git tracks changes
+* 3e141f9 git tracks changes
+* 4f98eb8 understand how stage works
+* 3380bfc understand how stage words
+* 156c53b append GPL
+* 0fbf770 add commit change operate
+* 545280e add distributed
+* 45d9213 add git operation show
+* 222b762 add 3 files.
+* 58e3737 wrote a readme file
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch -d feature1
+Deleted branch feature1 (was b0fe05a).
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add gitoperation.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "update operate"
+[master 5f5ee11] update operate
+ 1 file changed, 24 insertions(+)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b dev
+M       gitoperation.txt
+Switched to a new branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git add readme.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git commit -m "add merge"
+[dev d20297d] add merge
+ 1 file changed, 1 insertion(+)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git checkout master
+M       gitoperation.txt
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge --no-ff -m "merge with no-ff"
+fatal: No remote for the current branch.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge --no-ff -m "merge with no-ff"
+fatal: No remote for the current branch.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch
+  dev
+* master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge --no-ff -m"merge wie"
+fatal: No remote for the current branch.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git log
+commit 5f5ee114c9900ae0b2608efd8c4a1737258c7752
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 14:25:24 2016 +0800
+
+    update operate
+
+commit 1431eb63f250d63a79685743c264d5ae7c0da088
+Merge: c013037 b0fe05a
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 14:24:06 2016 +0800
+
+    conflict fixed
+
+commit c013037fd53fa73d13978aa1eb8917683d9e18b3
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 14:21:46 2016 +0800
+
+    & simple
+
+commit b0fe05a5b2ba6d813e633265760a70ca1d876517
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 14:20:18 2016 +0800
+
+    AND simple
+
+commit 1bb7206c26ca1805e563fac4ec51a20a5a6f0dfe
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 14:15:40 2016 +0800
+
+    branch test
+
+commit 1eeb6221004c9c79c99cc080a6f4c803d3c45c92
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 14:00:59 2016 +0800
+
+    update operation
+
+commit a935c35fc892289de076a126e8b5880ee19ba55b
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:52:21 2016 +0800
+
+    add operation
+
+commit e72961be44c55ae4007c1a1ba71b458925fad4a1
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:51:39 2016 +0800
+
+    add test.txt
+
+commit d6e1f0e7510e487861636f66ba899ab1c04ffd5c
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:44:49 2016 +0800
+
+    add operate
+
+commit e9eb860cf429d097fc61bee912714765f06ab270
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:42:55 2016 +0800
+
+    git tracks changes
+
+commit 3e141f9e3debb795e2b68a8c31820c670e0467cd
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:40:39 2016 +0800
+
+    git tracks changes
+
+commit 4f98eb88507a8d8644e912a5ddfe4c5df8d868e1
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:38:22 2016 +0800
+
+    understand how stage works
+
+commit 3380bfcfe5ccc8d62d314895a590458be923e5e7
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 09:35:33 2016 +0800
+
+    understand how stage words
+
+commit 156c53b99c7f5879a05d22d962a4bd54c707f781
+:
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   gitoperation.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add gitoperation.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "update"
+[master fd12c20] update
+ 1 file changed, 7 insertions(+)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge --no-ff -m "merge with no-ff"
+fatal: No remote for the current branch.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge -m "merge "
+fatal: No remote for the current branch.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ get check out dev
+bash: get: command not found
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b dev
+fatal: A branch named 'dev' already exists.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge readme.text
+merge: readme.text - not something we can merge
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b master
+fatal: A branch named 'master' already exists.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout master
+Already on 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch
+  dev
+* master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge readme.text
+merge: readme.text - not something we can merge
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch
+  dev
+* master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge dev
+Merge made by the 'recursive' strategy.
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ tie branch -d dev
+bash: tie: command not found
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch -d dev
+Deleted branch dev (was d20297d).
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git stash
+Saved working directory and index state WIP on master: 65327c0 Merge branch 'dev'
+HEAD is now at 65327c0 Merge branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git status
+On branch master
+nothing to commit, working directory clean
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout master
+Already on 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b issue-101
+Switched to a new branch 'issue-101'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (issue-101)
+$ git add readme.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (issue-101)
+$ git commit -m "fix bug 101"
+[issue-101 a0c5edc] fix bug 101
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (issue-101)
+$ git checkout master
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge --no-ff -m"merged bug fix 101" issue-101
+Merge made by the 'recursive' strategy.
+ readme.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch -d issue-101
+Deleted branch issue-101 (was a0c5edc).
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout dev
+error: pathspec 'dev' did not match any file(s) known to git.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git status
+On branch master
+nothing to commit, working directory clean
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git status
+On branch master
+nothing to commit, working directory clean
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git stash list
+stash@{0}: WIP on master: 65327c0 Merge branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git stash pop
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   gitoperation.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (71474eae0c140003851683a6ec1093a0d75f4af7)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git stash list
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   gitoperation.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add gitoperation.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "update"
+[master 54b154c] update
+ 1 file changed, 35 insertions(+), 1 deletion(-)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add gitoperation.txt
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "update"
+[master 951d83b] update
+ 1 file changed, 4 insertions(+)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b feature-vulcan
+Switched to a new branch 'feature-vulcan'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature-vulcan)
+$ git add vulcan.py
+fatal: pathspec 'vulcan.py' did not match any files
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature-vulcan)
+$ git add vulcan.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature-vulcan)
+$ git status
+On branch feature-vulcan
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   vulcan.py
+
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature-vulcan)
+$ git commit -m "add feature vulcan"
+[feature-vulcan 03d2c11] add feature vulcan
+ 1 file changed, 1 insertion(+)
+ create mode 100644 vulcan.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature-vulcan)
+$ git checkout dev
+error: pathspec 'dev' did not match any file(s) known to git.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (feature-vulcan)
+$ git checkout master
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout master
+Already on 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch -d feature-vulcan
+error: The branch 'feature-vulcan' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D feature-vulcan'.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch -D feature-vulcan
+Deleted branch feature-vulcan (was 03d2c11).
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout -b dev
+Switched to a new branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git remote
+origin
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git remote -v
+origin  git@github.com:honeysme/learngit.git (fetch)
+origin  git@github.com:honeysme/learngit.git (push)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git checkout master
+M       gitoperation.txt
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout master
+M       gitoperation.txt
+Already on 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push origin dev
+Counting objects: 33, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (33/33), 3.63 KiB | 0 bytes/s, done.
+Total 33 (delta 24), reused 0 (delta 0)
+remote: Resolving deltas: 100% (24/24), completed with 3 local objects.
+To git@github.com:honeysme/learngit.git
+ * [new branch]      dev -> dev
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push origin master
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:honeysme/learngit.git
+   1eeb622..951d83b  master -> master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ ^C
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git add hello.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git commit -m "add coding:utf_8"
+[master 37ee088] add coding:utf_8
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch
+  dev
+* master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout de
+error: pathspec 'de' did not match any file(s) known to git.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout dev
+M       gitoperation.txt
+Switched to branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git checkout dev
+M       gitoperation.txt
+Already on 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git add hello1.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git commit -m "add hello1.py"
+[dev c7d6545] add hello1.py
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello1.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git push origin dev
+To git@github.com:honeysme/learngit.git
+ ! [rejected]        dev -> dev (fetch first)
+error: failed to push some refs to 'git@github.com:honeysme/learngit.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git pull
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:honeysme/learngit
+   951d83b..e3dc6bc  dev        -> origin/dev
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> dev
+
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git branch
+* dev
+  master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> dev
+
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 282 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To git@github.com:honeysme/learngit.git
+   951d83b..37ee088  master -> master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git merge dev
+Already up-to-date.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git checkout master
+M       gitoperation.txt
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git merge dev
+Merge made by the 'recursive' strategy.
+ hello1.py | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello1.py
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push origin master
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 477 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local objects.
+To git@github.com:honeysme/learngit.git
+   37ee088..ac09137  master -> master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git checkout dev
+M       gitoperation.txt
+Switched to branch 'dev'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git branch
+* dev
+  master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (dev)
+$ git checkout master
+M       gitoperation.txt
+Switched to branch 'master'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag v1.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag
+v1.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git log --pretty=oneline --abbrev-commit
+ac09137 Merge branch 'dev'
+c7d6545 add hello1.py
+37ee088 add coding:utf_8
+951d83b update
+54b154c update
+dfd2b19 merged bug fix 101
+a0c5edc fix bug 101
+65327c0 Merge branch 'dev'
+fd12c20 update
+d20297d add merge
+5f5ee11 update operate
+1431eb6 conflict fixed
+c013037 & simple
+b0fe05a AND simple
+1bb7206 branch test
+1eeb622 update operation
+a935c35 add operation
+e72961b add test.txt
+d6e1f0e add operate
+e9eb860 git tracks changes
+3e141f9 git tracks changes
+4f98eb8 understand how stage works
+3380bfc understand how stage words
+156c53b append GPL
+0fbf770 add commit change operate
+545280e add distributed
+45d9213 add git operation show
+222b762 add 3 files.
+58e3737 wrote a readme file
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag v0.0 58585858
+fatal: Failed to resolve '58585858' as a valid ref.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag v0.0 58e3737
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag
+v0.0
+v1.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show
+commit ac09137030ab4df2a97ab4c59d2f55413cf4821c
+Merge: 37ee088 c7d6545
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 15:39:12 2016 +0800
+
+    Merge branch 'dev'
+
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show v0.0
+commit 58e37371985a9e084f92718cc3775bffe2e3caa9
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 08:55:27 2016 +0800
+
+    wrote a readme file
+
+diff --git a/readme.txt b/readme.txt
+new file mode 100644
+index 0000000..d8036c1
+--- /dev/null
++++ b/readme.txt
+@@ -0,0 +1,2 @@
++Git is a version control system.
++Git is free software.
+\ No newline at end of file
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show 1.0
+fatal: ambiguous argument '1.0': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show v1.0
+commit ac09137030ab4df2a97ab4c59d2f55413cf4821c
+Merge: 37ee088 c7d6545
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 15:39:12 2016 +0800
+
+    Merge branch 'dev'
+
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git log --pretty=oneline --abbrev-commit
+ac09137 Merge branch 'dev'
+c7d6545 add hello1.py
+37ee088 add coding:utf_8
+951d83b update
+54b154c update
+dfd2b19 merged bug fix 101
+a0c5edc fix bug 101
+65327c0 Merge branch 'dev'
+fd12c20 update
+d20297d add merge
+5f5ee11 update operate
+1431eb6 conflict fixed
+c013037 & simple
+b0fe05a AND simple
+1bb7206 branch test
+1eeb622 update operation
+a935c35 add operation
+e72961b add test.txt
+d6e1f0e add operate
+e9eb860 git tracks changes
+3e141f9 git tracks changes
+4f98eb8 understand how stage works
+3380bfc understand how stage words
+156c53b append GPL
+0fbf770 add commit change operate
+545280e add distributed
+45d9213 add git operation show
+222b762 add 3 files.
+58e3737 wrote a readme file
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag -a v0.1 -m "version 0.1 released" 222b762
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show v0.1
+tag v0.1
+Tagger: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 16:01:41 2016 +0800
+
+version 0.1 released
+
+commit 222b7626df116a3a4266de828346dc566b804981
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 08:58:37 2016 +0800
+
+    add 3 files.
+
+diff --git a/file1.txt b/file1.txt
+new file mode 100644
+index 0000000..08219db
+--- /dev/null
++++ b/file1.txt
+@@ -0,0 +1 @@
++file1
+\ No newline at end of file
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..c3ee11c
+--- /dev/null
++++ b/file2.txt
+@@ -0,0 +1 @@
++file2.txt
+\ No newline at end of file
+diff --git a/file3.txt b/file3.txt
+new file mode 100644
+index 0000000..49081a8
+--- /dev/null
++++ b/file3.txt
+@@ -0,0 +1 @@
++file3.txt
+\ No newline at end of file
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag -s v0.2 -m "signed version 0.2 released" 45d9213
+gpg: directory `/c/Users/Zjl/.gnupg' created
+gpg: new configuration file `/c/Users/Zjl/.gnupg/gpg.conf' created
+gpg: WARNING: options in `/c/Users/Zjl/.gnupg/gpg.conf' are not yet active during this run
+gpg: keyring `/c/Users/Zjl/.gnupg/secring.gpg' created
+gpg: keyring `/c/Users/Zjl/.gnupg/pubring.gpg' created
+gpg: skipped "honeysme <jixiangjinyumantang@outlook.com>": secret key not available
+gpg: signing failed: secret key not available
+error: gpg failed to sign the data
+error: unable to sign the tag
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag show
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show tag
+fatal: ambiguous argument 'tag': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show
+commit ac09137030ab4df2a97ab4c59d2f55413cf4821c
+Merge: 37ee088 c7d6545
+Author: honeysme <jixiangjinyumantang@outlook.com>
+Date:   Thu Oct 13 15:39:12 2016 +0800
+
+    Merge branch 'dev'
+
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git show v0.2
+fatal: ambiguous argument 'v0.2': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag
+show
+v0.0
+v0.1
+v1.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag -d v0.1
+Deleted tag 'v0.1' (was 05ecd45)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag
+show
+v0.0
+v1.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git brach
+git brgit: 'brach' is not a git command. See 'git --help'.
+
+Did you mean this?
+        branch
+a
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git branch
+  dev
+* master
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push orign v0.1
+error: src refspec v0.1 does not match any.
+error: failed to push some refs to 'orign'
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push orign v1.0
+fatal: 'orign' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push orign v0.0
+fatal: 'orign' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push origin --tags
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:honeysme/learngit.git
+ * [new tag]         show -> show
+ * [new tag]         v0.0 -> v0.0
+ * [new tag]         v1.0 -> v1.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git tag -d v0.0
+Deleted tag 'v0.0' (was 58e3737)
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ git push origin :refs/tags/v0.0
+To git@github.com:honeysme/learngit.git
+ - [deleted]         v0.0
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$ $ git push origin :refs/tags/v0.9
+bash: $: command not found
+
+Zjl@Zjl-PC MINGW64 ~/learngit (master)
+$
