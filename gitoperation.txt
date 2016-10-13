@@ -70,3 +70,15 @@ $ git commit -m "add 3 files."
 
 Zjl@Zjl-PC MINGW64 /f/workspace/repository/learngit (master)
 $
+
+提交修改
+git status
+git diff
+git add readme.txt
+git status
+git commit -m "修改说明"
+
+要随时掌握工作区的状态，使用git status命令。
+
+如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+
