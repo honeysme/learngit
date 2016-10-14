@@ -1480,3 +1480,215 @@ bash: $: command not found
 
 Zjl@Zjl-PC MINGW64 ~/learngit (master)
 $
+
+//////////////////////////////////////////////////////////
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd f:
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd NGW64 /f
+bash: cd: NGW64: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f
+$ $ cd
+bash: $: command not found
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd NGW64 /f
+bash: cd: NGW64: No such file or directory
+
+Zjl@Zjl-PC MINGW64 /f
+$ $ cd
+bash: $: command not found
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd workspace\wamp\apache\htdocs\library1\library
+bash: cd: workspacewampapachehtdocslibrary1library: No such file or directory
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd workspace/wamp/apache/htdocs/library1/library
+bash: cd: workspace/wamp/apache/htdocs/library1/library: No such file or directory
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd f
+bash: cd: f: No such file or directory
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd f
+bash: cd: f: No such file or directory
+
+Zjl@Zjl-PC MINGW64 ~
+$ cd f:
+
+Zjl@Zjl-PC MINGW64 /f
+$ cd workspace/wamp/apache/htdocs/library1/library
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library1/library (master)
+$ git branch
+* master
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library1/library (master)
+$ git log
+commit 33b66ff679ae14fc2f1357f9370c9785545714b3
+Author: taotao <69443245@qq.com.com>
+Date:   Thu Oct 13 16:07:24 2016 +0800
+
+    完善整体流程
+
+commit ba3051353a26c8004c62ac78674dd246b848a8db
+Author: taotao <69443245@qq.com.com>
+Date:   Wed Oct 12 18:01:17 2016 +0800
+
+    完成整体框架
+
+commit d755b5793d6144382a629272ef334d5e126b1ff1
+Author: taotao <69443245@qq.com.com>
+Date:   Wed Oct 12 14:20:33 2016 +0800
+
+    git ignore
+
+commit 4aeda1045a0c174a601f4308f2953f8ffa9a2e63
+Author: taotao <69443245@qq.com.com>
+Date:   Wed Oct 12 14:16:41 2016 +0800
+
+    git ignore
+:
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library1/library (master)
+$ git remote -v
+origin  https://github.com/luopotaotao/library.git (fetch)
+origin  https://github.com/luopotaotao/library.git (push)
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library1/library (master)
+$ cd..
+bash: cd..: command not found
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library1/library (master)
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library1
+$ cd ..
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs
+$ cd library
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ git remote -v
+fatal: Not a git repository (or any of the parent directories): .git
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library
+$ cd library
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git remote -v
+origin  https://github.com/luopotaotao/library.git (fetch)
+origin  https://github.com/luopotaotao/library.git (push)
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git fetch origin master From https://github.com/luopotaotao/library.git
+fatal: Invalid refspec 'https://github.com/luopotaotao/library.git'
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git fetch origin master From https://github.com/luopotaotao/library.git
+fatal: Invalid refspec 'https://github.com/luopotaotao/library.git'
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git checkout master
+M       db/database.js
+M       package.json
+Already on 'master'
+Your branch is up-to-date with 'origin/master'.
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git fetch origin
+remote: Counting objects: 86, done.
+remote: Compressing objects: 100% (32/32), done.
+remote: Total 86 (delta 62), reused 77 (delta 53), pack-reused 0
+Unpacking objects: 100% (86/86), done.
+From https://github.com/luopotaotao/library
+   ba30513..159e873  master     -> origin/master
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git checkout master
+M       db/database.js
+M       package.json
+Already on 'master'
+Your branch is behind 'origin/master' by 12 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git merge origin/master
+Updating ba30513..159e873
+error: Your local changes to the following files would be overwritten by merge:
+        db/database.js
+Please, commit your changes or stash them before you can merge.
+Aborting
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git status
+On branch master
+Your branch is behind 'origin/master' by 12 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   db/database.js
+        modified:   package.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git checkout -- db/database.js
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git checkout -- package.json
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git fetch origin
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git merge origin/master
+Updating ba30513..159e873
+Fast-forward
+ app.js                           |  14 +-
+ db/database.js                   |   4 +-
+ db/libraryModels.js              |  12 +-
+ public/javascripts/dateFormat.js |  13 ++
+ routes/borrow.js                 |  35 +++-
+ routes/return.js                 |  33 +++-
+ service/BookService.js           | 182 +++++++++++++++-----
+ service/BorrowService.js         |  52 +++++-
+ service/RecordService.js         |  17 ++
+ service/UserService.js           |   2 +-
+ test/service/testBookService.js  |  19 ++-
+ views/booksQuery_index.ejs       |  61 +++++--
+ views/books_index.ejs            |   9 +-
+ views/bookslist_index.ejs        |  15 +-
+ views/borrow_index.ejs           |  84 +++++----
+ views/borrow_index_dialog.ejs    | 137 +++++++++++++++
+ views/borrow_select_user.ejs     |   2 +-
+ views/index.ejs                  | 242 +++++++++++++++++++++++++-
+ views/library-management.ejs     |  89 ----------
+ views/personal-information.ejs   | 109 ------------
+ views/records_index.ejs          |   5 +-
+ views/return_index.ejs           | 360 +++++++++++++++++++++------------------
+ views/users_index.ejs            |  76 ++++++++-
+ 23 files changed, 1064 insertions(+), 508 deletions(-)
+ create mode 100644 service/RecordService.js
+ create mode 100644 views/borrow_index_dialog.ejs
+ delete mode 100644 views/library-management.ejs
+ delete mode 100644 views/personal-information.ejs
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+
+Zjl@Zjl-PC MINGW64 /f/workspace/wamp/apache/htdocs/library/library (master)
+$
